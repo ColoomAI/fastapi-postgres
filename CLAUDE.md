@@ -22,7 +22,7 @@ Deviating is a bug.
 |---|---|---|
 | Data access | **SQLAlchemy 2.0 async (`sqlalchemy[asyncio]`)** + `asyncpg` driver | No SQLModel (less mature for prod), no Tortoise / Peewee, no raw `psycopg` queries in routers. The ORM is SQLAlchemy 2.0 because that's what fastapi-supabase's idiomatic alternative is — one stack, two data layers. |
 | Authorization | **In code, in `app/services/`** | Every protected operation checks `if resource.author_id != current_user.id: raise HTTPError("Not found", 404)` in the service. Routers parse and call; they never own the rule. |
-| Auth (sessions) | bcrypt + python-jose HS256, httpOnly cookie | Don't ship JWT in Authorization header — cookies are what the matching `nextjs-postgres` / `express-postgres` use. Don't replace python-jose; we picked it (vs PyJWT) for the wider FastAPI tutorial alignment. |
+| Auth (sessions) | bcrypt + python-jose HS256, httpOnly cookie | Don't ship JWT in Authorization header — cookies are what the matching `express-postgres` template uses. Don't replace python-jose; we picked it (vs PyJWT) for the wider FastAPI tutorial alignment. |
 | Migrations | **Alembic** (`migrations/`), hand-written DDL | No `Base.metadata.create_all()`. Ever. Migrations are the only source of truth. Alembic's autogenerate is fine for first-pass diffing, but every commit's migration is hand-reviewed. |
 | Validation | Pydantic v2 (`schemas/`) | No marshmallow / cattrs. EmailStr from `pydantic[email]` for email validation. |
 | Response shape | `Envelope[T]` from `app.core.response` | Every JSON endpoint returns `Envelope[T]`. SSE / file-download endpoints are the only exception (see `routers/chat.py`). |

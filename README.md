@@ -17,7 +17,7 @@ the **single-process agent pattern**: async generator → SSE frames →
 
 Use this template (or `fastapi-supabase` if you want managed Supabase)
 when you're building an AI / agent application. Use `express-postgres`
-/ `nextjs-postgres` when you'd rather stay in the Node ecosystem.
+when you'd rather stay in the Node ecosystem.
 
 ## What's included
 

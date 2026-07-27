@@ -97,7 +97,7 @@ Tarrs auto-injects:
 
 Sandbox runs `uvicorn` on port 8080 (Tarrs convention: frontend :3000,
 Node backend :4000, Python/agent :8080). Public URL is
-`<project-slug>.dev.tarrs.io`.
+`<project-slug>.dev.tarrsapp.io`.
 
 ## Local dev
 

@@ -10,6 +10,7 @@ statement_timeout / idle_in_transaction_session_timeout guard against
 slow queries wedging the pool — set as session-level GUCs via
 `connect_args.server_settings` so they apply to every connection.
 """
+import os
 from collections.abc import AsyncGenerator
 from typing import Any
 
@@ -28,7 +29,14 @@ def _make_connect_args() -> dict[str, Any]:
         },
     }
     if get_settings().use_ssl:
-        args["ssl"] = "require"
+        # "require" encrypts but does NOT verify the server certificate —
+        # the same posture as rejectUnauthorized:false, in a different
+        # spelling. SSL is enabled precisely because the link is
+        # untrusted, so verify by default. DATABASE_SSL_INSECURE=1 is an
+        # explicit opt-out for a local self-signed setup.
+        args["ssl"] = (
+            "require" if os.getenv("DATABASE_SSL_INSECURE") == "1" else "verify-full"
+        )
     return args
 
 

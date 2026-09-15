@@ -32,7 +32,7 @@ settings = get_settings()
 app = FastAPI(
     title="My API",
     version="0.1.0",
-    description="Tarrs-ready FastAPI + Postgres backend (SQLAlchemy 2.0 async + Alembic).",
+    description="Coloom-ready FastAPI + Postgres backend (SQLAlchemy 2.0 async + Alembic).",
 )
 
 if settings.cors_origin_list:

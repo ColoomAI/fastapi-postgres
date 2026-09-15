@@ -1,7 +1,7 @@
 [project]
 name = "fastapi-postgres"
 version = "0.1.0"
-description = "Tarrs-ready FastAPI + Postgres backend starter (SQLAlchemy 2.0 async + Alembic)"
+description = "Coloom-ready FastAPI + Postgres backend starter (SQLAlchemy 2.0 async + Alembic)"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.115.0",

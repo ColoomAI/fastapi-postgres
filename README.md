@@ -1,6 +1,6 @@
 # FastAPI + Postgres API starter
 
-A Tarrs-ready Python + FastAPI backend that talks to your own Postgres
+A Coloom-ready Python + FastAPI backend that talks to your own Postgres
 via SQLAlchemy 2.0 (async) + Alembic. Same architectural discipline as
 `express-postgres` (controller → service → model, response envelope,
 structured errors, request observability, in-code authorization).
@@ -84,9 +84,9 @@ secure (in prod); jose-signed HS256, 7-day TTL.
 authenticated route. `get_current_user_optional` is the soft variant
 that returns `None` for anonymous (used by `GET /api/auth/me`).
 
-## How Tarrs uses this
+## How Coloom uses this
 
-Tarrs auto-injects:
+Coloom auto-injects:
 
 - `DATABASE_URL` — points at the local Postgres sidecar (use
   `postgresql+asyncpg://...` so SQLAlchemy uses the async driver at
@@ -95,7 +95,7 @@ Tarrs auto-injects:
 - `JWT_SECRET` — generated per-project, stored in Sandbox Secrets
 - `ANTHROPIC_API_KEY` — optional, only for the `/api/chat` example
 
-Sandbox runs `uvicorn` on port 8080 (Tarrs convention: frontend :3000,
+Sandbox runs `uvicorn` on port 8080 (Coloom convention: frontend :3000,
 Node backend :4000, Python/agent :8080). Public URL is
 `<project-slug>.dev.tarrsapp.io`.
 
@@ -154,7 +154,7 @@ with an LLM" use cases live happily on this pattern indefinitely.
 
 Same-origin / shared eTLD+1: default `COOKIE_SAMESITE=lax` works.
 
-Cross-origin (frontend on Vercel, backend on Tarrs sandbox):
+Cross-origin (frontend on Vercel, backend on a Coloom sandbox):
 
 ```
 COOKIE_SAMESITE=none

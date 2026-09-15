@@ -24,7 +24,7 @@ depends_on: str | Sequence[str] | None = None
 def upgrade() -> None:
     # gen_random_uuid lives in pgcrypto on Postgres 13-; core on 14+.
     # Enabling the extension is idempotent — keeps the migration
-    # portable across PG versions Tarrs sandboxes might ship.
+    # portable across PG versions Coloom sandboxes might ship.
     op.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto")
 
     op.create_table(
